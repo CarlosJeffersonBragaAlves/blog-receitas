@@ -1,0 +1,55 @@
+.slide{
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+}
+
+.slide__imagem{
+  height: 100%;
+  width: 100%;
+
+}
+
+
+.slide__conteudo{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  //padding: 0 10em;
+  background-image: linear-gradient(to right,rgba(0, 0, 0, 0.808), rgba(0, 0, 0, 0.808), rgba(255, 255, 255, 0));
+}
+
+.slide__titulo{
+  font-size: 4rem;
+  font-family: var(--font-raleway);
+  font-weight: bold;
+  color: var(--surface-100);
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.slide__subtitulo{
+  padding-left: 10px;
+  font-size: 1.1rem;
+  color: var(--surface-400);
+}
+
+.slide__conteiner__chips{
+  display: flex;
+  justify-content: left;
+  padding: 0 30px;
+  margin-bottom: 50px;
+}
+
+.slide__chips{
+  background: white;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 20px;
+  margin-right: 10px;
+}
