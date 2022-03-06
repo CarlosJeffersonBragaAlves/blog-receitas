@@ -12,7 +12,10 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { faAlignLeft, faAlignRight, faStopwatch, faUtensils } from '@fortawesome/free-solid-svg-icons';
 import {ImageModule} from 'primeng/image';
 import { ChipModule } from 'primeng/chip';
-
+import {RadioButtonModule} from 'primeng/radiobutton';
+import { FormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {CardModule} from 'primeng/card';
 
 
 @NgModule({
@@ -29,7 +32,11 @@ import { ChipModule } from 'primeng/chip';
     ButtonModule,
     FontAwesomeModule,
     ImageModule,
-    ChipModule
+    ChipModule,
+    RadioButtonModule,
+    FormsModule,
+    MatCardModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

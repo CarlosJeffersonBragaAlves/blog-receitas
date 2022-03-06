@@ -1,26 +1,89 @@
-<div class="slide" >
-  <img class="slide__imagem" src="https://www.primefaces.org/primeng/assets/showcase/images/galleria/galleria1.jpg" >
+<div class="slide">
+  <img
+    class="slide__imagem"
+    src="https://www.primefaces.org/primeng/assets/showcase/images/galleria/galleria1.jpg"
+  />
 
-  <div class="slide__conteudo">
-    <h2 class="slide__titulo">Arroz Cremoso de Legumes</h2>
-    <p class="slide__subtitulo">Receita de Arroz Cremoso de Legumes delicioso feito com IMPACT Banana, banana-da-terra e legumes</p>
-    <div class="slide__conteiner__chips">
-      <div class="slide__chips">
-        <fa-icon [icon]="['fas', 'stopwatch']" ></fa-icon>
-        Tempo: 30min
+  <div class="slide__conteiner">
+    <div class="slide__conteudo">
+      <h2 class="slide__titulo">Arroz Cremoso de Legumes</h2>
+
+      <p class="slide__subtitulo">
+        Receita de Arroz Cremoso de Legumes delicioso feito com IMPACT Banana,
+        banana-da-terra e legumes
+      </p>
+
+      <div class="slide__conteiner__chips">
+        <div class="slide__chips">
+          <fa-icon [icon]="['fas', 'stopwatch']"></fa-icon>
+          Tempo: 30min
+        </div>
+
+        <div class="slide__chips">
+          <fa-icon [icon]="['fas', 'align-right']" [rotate]="90"></fa-icon>
+          Dificuldade: Fácil
+        </div>
+
+        <div class="slide__chips">
+          <fa-icon [icon]="['fas', 'utensils']"></fa-icon>
+          Porções: 2
+        </div>
       </div>
-      <div class="slide__chips">
-        <fa-icon [icon]="['fas', 'align-right']" [rotate]="90" ></fa-icon>
-        Dificuldade: Fácil
+
+      <div class="grid">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Confira Agora"
+          icon="pi pi-arrow-right"
+          iconPos="right"
+          class="p-button-rounded p-button-lg slide__button col-3"
+        ></button>
       </div>
-      <div class="slide__chips">
-        <fa-icon [icon]="['fas', 'utensils']"  ></fa-icon>
-        Porções: 2
-      </div>
+
     </div>
-    <button pButton pRipple type="button" label="Secondary" class="p-button-rounded p-button-secondary p-button-lg"></button>
+
+    <div class="slide__posicao">
+
+      <div class="slide__posicao__action">
+        <p-radioButton
+          name="city"
+          [value]="0"
+          [(ngModel)]="posicao"
+          inputId="city1"
+        ></p-radioButton>
+      </div>
+
+      <div class="slide__posicao__action">
+        <p-radioButton
+          name="city"
+          [value]="1"
+          [(ngModel)]="posicao"
+          inputId="city2"
+        ></p-radioButton>
+      </div>
+
+      <div class="slide__posicao__action">
+        <p-radioButton
+          name="city"
+          [value]="2"
+          [(ngModel)]="posicao"
+          inputId="city3"
+        ></p-radioButton>
+      </div>
+
+      <div class="slide__posicao__action">
+        <p-radioButton
+          name="city"
+          [value]="3"
+          [(ngModel)]="posicao"
+          inputId="city4"
+        ></p-radioButton>
+      </div>
+
+    </div>
 
   </div>
 
 </div>
-

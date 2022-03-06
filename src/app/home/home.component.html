@@ -2,3 +2,28 @@
   <app-slide></app-slide>
 </section>
 
+<section class="post grid">
+
+  <p-card [header]="receita.titulo" [subheader]="receita.subtitulo" class="card col-4" styleClass="p-card-shadow" *ngFor="let item of items">
+    <ng-template pTemplate="header">
+        <img alt="Card" [src]="receita.img">
+    </ng-template>
+    <div class="chips">
+      <div class="chips__item">
+        <fa-icon [icon]="['fas', 'stopwatch']"></fa-icon>
+        Tempo: 30min
+      </div>
+
+      <div class="chips__item">
+        <fa-icon [icon]="['fas', 'align-right']" [rotate]="90"></fa-icon>
+        Dificuldade: Fácil
+      </div>
+
+      <div class="chips__item">
+        <fa-icon [icon]="['fas', 'utensils']"></fa-icon>
+        Porções: 2
+      </div>
+    </div>
+  </p-card>
+
+</section>

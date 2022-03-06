@@ -11,17 +11,20 @@
 
 }
 
-
-.slide__conteudo{
+.slide__conteiner{
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   height: 100%;
   width: 100%;
   top: 0;
-  //padding: 0 10em;
-  background-image: linear-gradient(to right,rgba(0, 0, 0, 0.808), rgba(0, 0, 0, 0.808), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(to right,rgba(0, 0, 0, 0.808), rgba(0, 0, 0, 0.308));
+}
+
+.slide__conteudo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10em;
+  height: calc(100% - 50px);
 }
 
 .slide__titulo{
@@ -29,8 +32,9 @@
   font-family: var(--font-raleway);
   font-weight: bold;
   color: var(--surface-100);
-  margin-bottom: 20px;
+  //margin-bottom: 20px;
   padding: 10px;
+  line-height: 1;
 }
 
 .slide__subtitulo{
@@ -47,9 +51,25 @@
 }
 
 .slide__chips{
-  background: white;
+ // background: white;
+  background: var(--surface-500);
   padding: 10px;
   font-size: 1rem;
-  border-radius: 20px;
+  border-radius: 16px;
+  margin-right: 10px;
+  color: white;
+}
+
+.slide__button{
+  margin-left: 20px;
+}
+
+
+.slide__posicao{
+  display: flex;
+  justify-content: center;
+}
+
+.slide__posicao__action{
   margin-right: 10px;
 }

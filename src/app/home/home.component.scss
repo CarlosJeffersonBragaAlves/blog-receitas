@@ -4,3 +4,24 @@
   height: calc(100% - 6em);
 }
 
+.post{
+  margin: 0 10em;
+  padding: 2em 5em;
+}
+
+.chips{
+  display: flex;
+  justify-content: left;
+  //padding: 0 30px;
+  //margin-bottom: 50px;
+
+}
+
+.chips__item{
+  background: var(--surface-500);
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 16px;
+  margin-right: 10px;
+  color: white;
+}

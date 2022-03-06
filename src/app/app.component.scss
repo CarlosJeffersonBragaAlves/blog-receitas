@@ -35,3 +35,39 @@
   font-weight: normal;
   color: var(--surface-800);
 }
+
+
+.rodape{
+  background-color: var(--gray-900);
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 10em;
+  color: var(--surface-0) ;
+}
+
+.rodape__logo{
+  align-items: center;
+  display: flex;
+}
+
+.rodape__logo__titulo{
+
+  font-weight: bold;
+
+  margin: 0;
+}
+
+
+.rodape__nav__list{
+  display: flex;
+  list-style-type: none;
+}
+
+.rodape__nav__action{
+  color: var(--surface-0) ;
+  font-family: var(--font-raleway);
+  font-weight: normal;
+}
+
