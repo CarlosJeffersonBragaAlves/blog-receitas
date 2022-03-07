@@ -1,0 +1,49 @@
+<section class="filter">
+  <div class="grid">
+
+      <mat-form-field appearance="outline" class="col-11">
+        <mat-label>Pesquisar</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <div class="col-1">
+
+        <button pButton pRipple type="button" icon="pi pi-filter-fill" class="p-button-rounded"></button>
+      </div>
+  </div>
+
+</section>
+
+
+<section class="receitas">
+  <!-- <p-divider align="left">
+
+  </p-divider> -->
+  <h2 class="receitas__titulo">Receitas</h2>
+  <hr  >
+
+<div class="grid">
+  <p-card [header]="receita.titulo" [subheader]="receita.subtitulo" class="card col-4" *ngFor="let item of items">
+    <ng-template pTemplate="header">
+        <img alt="Card" [src]="receita.img">
+    </ng-template>
+    <div class="chips">
+      <div class="chips__item">
+        <fa-icon [icon]="['fas', 'stopwatch']"></fa-icon>
+        Tempo: 30min
+      </div>
+
+      <div class="chips__item">
+        <fa-icon [icon]="['fas', 'align-right']" [rotate]="90"></fa-icon>
+        Dificuldade: Fácil
+      </div>
+
+      <div class="chips__item">
+        <fa-icon [icon]="['fas', 'utensils']"></fa-icon>
+        Porções: 2
+      </div>
+    </div>
+  </p-card>
+</div>
+<p-paginator [rows]="10" [totalRecords]="120" ></p-paginator>
+</section>

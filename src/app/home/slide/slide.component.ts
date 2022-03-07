@@ -7,23 +7,58 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SlideComponent implements OnInit {
 
-  imagem: string = ''
   posicao: number = 0
+  teste: string[] = ['01','02','03','04']
+  slideValue: string = ''
+  index: number = 1
+  item!: { titulo: string; subtitulo: string, img: string, index: number };
+  slides: {titulo: string,subtitulo: string,img: string}[] = [
+    {
+      titulo: 'Arroz Cremoso de Legumes',
+      subtitulo: 'Receita De Arroz Cremoso De Legumes Delicioso Feito Com Impact Banana, Banana-da-terra E Legumes',
+      img: 'https://images.aws.nestle.recipes/resized/c86f80b4a040f4ae1225a629a0856d4c_arroz-cremoso-legumes-receitas-nestle_1200_600.jpg'
+    },
+    {
+      titulo: 'Escondidinho de Frango e Mandioquinha',
+      subtitulo: 'Receita de Escondidinho de Frango e Mandioquinha delicioso feito com IMPACT Banana, peito de frango desfiado, tomate e queijo parmesão',
+      img: 'https://images.aws.nestle.recipes/resized/05efe97045a4c8020a1fb01f8b073a49_escondidinho-frango-mandioquinha-receitas-nestle_1200_600.jpg'
+    },
+    {
+      titulo: 'Carne Moída Cremosa com Batata',
+      subtitulo: 'Receita de Carne Moída Cremosa e Batata deliciosa com IMPACT Banana, batata, extrato de tomate e cebolinha verde',
+      img: 'https://images.aws.nestle.recipes/resized/3cc0edd266542fdce05ebb8aeaada536_carne-moida-cremosa-batata-receitas-nestle_1200_600.jpg'
+    },
+    {
+      titulo: 'Strogonoff de Carne com Impact',
+      subtitulo: 'Receita de Strogonoff de Carne delicioso feito com IMPACT Baunilha, contra-filé e cogumelos',
+      img: 'https://images.aws.nestle.recipes/resized/9e1f8e0ed6c4df8098d7b8e647629627_strogonoff-carne-receitas-nestle_1200_600.jpg'
+    },
+  ]
 
   constructor() { }
 
   ngOnInit() {
-    this.imagem = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fblog.emania.com.br%2Fdireitos-autorais-aspectos-legais-da-fotografia%2F&psig=AOvVaw0JsX6j8ch6VM-ESF3-6Pk1&ust=1646537647438000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNC20u-ErvYCFQAAAAAdAAAAABAD"
+    this.item = {...this.slides[0],index:0}
+    this.slide(5000,this.slides)
 
-
-    setInterval(() => {
-      this.posicao++
-      console.log('posicao',this.posicao)
-      if(this.posicao >= 4){
-        this.posicao = 0;
-      }
-
-    },5000)
   }
+
+  slide(time:number, item: any[]){
+    setInterval(() => {
+      if(this.index >= (item.length)){
+        this.index = 0
+      }
+      this.item = {...this.slides[this.index],index: this.index}
+
+      this.index++
+
+    },time)
+  }
+
+  selectSlide(i: number){
+    this.index = i
+    this.item = {...this.slides[i],index: i}
+  }
+
 
 }

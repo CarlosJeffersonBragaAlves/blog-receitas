@@ -1,16 +1,17 @@
+
+
 <div class="slide">
+
   <img
     class="slide__imagem"
-    src="https://www.primefaces.org/primeng/assets/showcase/images/galleria/galleria1.jpg"
+    [src]="item.img"
   />
-
   <div class="slide__conteiner">
     <div class="slide__conteudo">
-      <h2 class="slide__titulo">Arroz Cremoso de Legumes</h2>
+      <h2 class="slide__titulo">{{item.titulo | titlecase}}</h2>
 
       <p class="slide__subtitulo">
-        Receita de Arroz Cremoso de Legumes delicioso feito com IMPACT Banana,
-        banana-da-terra e legumes
+       {{ item.subtitulo | titlecase}}
       </p>
 
       <div class="slide__conteiner__chips">
@@ -46,41 +47,15 @@
 
     <div class="slide__posicao">
 
-      <div class="slide__posicao__action">
-        <p-radioButton
+      <div class="slide__posicao__action" *ngFor="let a of slides; index as i">
+        <p-radioButton (onClick)="selectSlide(i)"
           name="city"
-          [value]="0"
-          [(ngModel)]="posicao"
+          [value]="i"
+          [(ngModel)]="item.index"
           inputId="city1"
         ></p-radioButton>
       </div>
 
-      <div class="slide__posicao__action">
-        <p-radioButton
-          name="city"
-          [value]="1"
-          [(ngModel)]="posicao"
-          inputId="city2"
-        ></p-radioButton>
-      </div>
-
-      <div class="slide__posicao__action">
-        <p-radioButton
-          name="city"
-          [value]="2"
-          [(ngModel)]="posicao"
-          inputId="city3"
-        ></p-radioButton>
-      </div>
-
-      <div class="slide__posicao__action">
-        <p-radioButton
-          name="city"
-          [value]="3"
-          [(ngModel)]="posicao"
-          inputId="city4"
-        ></p-radioButton>
-      </div>
 
     </div>
 

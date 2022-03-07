@@ -1,3 +1,4 @@
+import { ReceitaComponent } from './receitas/receita/receita.component';
 import { SlideComponent } from './home/slide/slide.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,13 +17,23 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {CardModule} from 'primeng/card';
-
+import { ReceitasComponent } from './receitas/receitas.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {DividerModule} from 'primeng/divider';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {PaginatorModule} from 'primeng/paginator';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SlideComponent
+    SlideComponent,
+    ReceitasComponent,
+    ReceitaComponent
    ],
   imports: [
     BrowserModule,
@@ -36,7 +47,15 @@ import {CardModule} from 'primeng/card';
     RadioButtonModule,
     FormsModule,
     MatCardModule,
-    CardModule
+    CardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    DividerModule,
+    MatDividerModule,
+    MatPaginatorModule,
+    PaginatorModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

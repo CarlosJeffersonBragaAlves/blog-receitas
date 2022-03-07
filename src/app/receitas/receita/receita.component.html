@@ -1,0 +1,47 @@
+<section>
+  <div class="post__cabecalho">
+    <img class="post__imagem" src="https://images.aws.nestle.recipes/resized/c86f80b4a040f4ae1225a629a0856d4c_arroz-cremoso-legumes-receitas-nestle_1200_600.jpg">
+    <div class="post__filtro">
+      <h2 class="post__titulo">Arroz Cremoso de Legumes</h2>
+      <h3 class="post__subtitulo">Receita de Arroz Cremoso de Legumes delicioso feito com IMPACT Banana, banana-da-terra e legumes</h3>
+      <div class="chips">
+        <div class="chips__item">
+          <fa-icon [icon]="['fas', 'stopwatch']"></fa-icon>
+          Tempo: 30min
+        </div>
+
+        <div class="chips__item">
+          <fa-icon [icon]="['fas', 'align-right']" [rotate]="90"></fa-icon>
+          Dificuldade: Fácil
+        </div>
+
+        <div class="chips__item">
+          <fa-icon [icon]="['fas', 'utensils']"></fa-icon>
+          Porções: 2
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="post grid">
+    <div class="col-4">
+      <mat-list>
+        <div mat-subheader class="post__subtitulo" style="color: black;">Ingredientes</div>
+        <mat-list-item *ngFor="let ingrediente of ingredientes">
+          <mat-icon mat-list-icon>arrow_forward_ios</mat-icon>
+          <div>
+            {{ingrediente}}
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="col-8">
+      <mat-list>
+        <div mat-subheader class="post__subtitulo" style="color: black;">Modo de preparo</div>
+        <mat-list-item *ngFor="let item of modoPreparos; index as i">
+          <mat-icon mat-list-icon>{{'filter_' + (i + 1)}}</mat-icon>
+          <div>{{item}}</div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</section>
