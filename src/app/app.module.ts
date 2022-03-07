@@ -26,6 +26,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {PaginatorModule} from 'primeng/paginator';
 import {MatListModule} from '@angular/material/list';
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {MatListModule} from '@angular/material/list';
     MatDividerModule,
     MatPaginatorModule,
     PaginatorModule,
-    MatListModule
+    MatListModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

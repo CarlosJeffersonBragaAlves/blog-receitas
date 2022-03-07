@@ -50,8 +50,15 @@
 .chips__item{
   background: var(--surface-500);
   padding: 10px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   border-radius: 16px;
   margin-right: 10px;
   color: white;
+}
+
+
+.titulo__outrasReceitas{
+
+  font-family: var(--font-raleway);
+  font-size: 2rem;
 }

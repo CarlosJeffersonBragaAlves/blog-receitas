@@ -43,5 +43,67 @@
         </mat-list-item>
       </mat-list>
     </div>
+  <div class="col-12">
+
+    <p-carousel [value]="items" [numVisible]="3" [numScroll]="2" [circular]="false">
+      <ng-template pTemplate="header">
+        <h2 class="titulo__outrasReceitas">Receitas Relacionadas</h2>
+      </ng-template>
+      <ng-template let-product pTemplate="item">
+        <div style="margin-left: 10px;">
+          <p-card [header]="receita.titulo" [subheader]="receita.subtitulo" >
+            <ng-template pTemplate="header">
+                <img alt="Card" [src]="receita.img">
+            </ng-template>
+            <div class="chips">
+              <div class="chips__item">
+                <fa-icon [icon]="['fas', 'stopwatch']"></fa-icon>
+                Tempo: 30min
+              </div>
+
+              <div class="chips__item">
+                <fa-icon [icon]="['fas', 'align-right']" [rotate]="90"></fa-icon>
+                Dificuldade: Fácil
+              </div>
+
+              <div class="chips__item">
+                <fa-icon [icon]="['fas', 'utensils']"></fa-icon>
+                Porções: 2
+              </div>
+            </div>
+          </p-card>
+        </div>
+      </ng-template>
+  </p-carousel>
+
+
+    <!-- <div class="grid">
+      <p-card [header]="receita.titulo" [subheader]="receita.subtitulo">
+        <ng-template pTemplate="header">
+            <img alt="Card" [src]="receita.img">
+        </ng-template>
+        <div class="chips">
+          <div class="chips__item">
+            <fa-icon [icon]="['fas', 'stopwatch']"></fa-icon>
+            Tempo: 30min
+          </div>
+
+          <div class="chips__item">
+            <fa-icon [icon]="['fas', 'align-right']" [rotate]="90"></fa-icon>
+            Dificuldade: Fácil
+          </div>
+
+          <div class="chips__item">
+            <fa-icon [icon]="['fas', 'utensils']"></fa-icon>
+            Porções: 2
+          </div>
+        </div>
+      </p-card>
+    </div> -->
   </div>
+
+  </div>
+
+
+
 </section>
