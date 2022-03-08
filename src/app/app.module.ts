@@ -1,3 +1,4 @@
+import { DataService } from './shared/services/data.service';
 import { ReceitaComponent } from './receitas/receita/receita.component';
 import { SlideComponent } from './home/slide/slide.component';
 import { NgModule } from '@angular/core';
@@ -27,6 +28,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {PaginatorModule} from 'primeng/paginator';
 import {MatListModule} from '@angular/material/list';
 import {CarouselModule} from 'primeng/carousel';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import {CarouselModule} from 'primeng/carousel';
     HomeComponent,
     SlideComponent,
     ReceitasComponent,
-    ReceitaComponent
+    ReceitaComponent,
    ],
   imports: [
     BrowserModule,
@@ -57,9 +59,10 @@ import {CarouselModule} from 'primeng/carousel';
     MatPaginatorModule,
     PaginatorModule,
     MatListModule,
-    CarouselModule
+    CarouselModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
