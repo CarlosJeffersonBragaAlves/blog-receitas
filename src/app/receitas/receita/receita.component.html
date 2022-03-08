@@ -1,4 +1,4 @@
-<section>
+<section #post>
   <div class="post__cabecalho">
     <img class="post__imagem" src="https://images.aws.nestle.recipes/resized/c86f80b4a040f4ae1225a629a0856d4c_arroz-cremoso-legumes-receitas-nestle_1200_600.jpg">
     <div class="post__filtro">
@@ -53,7 +53,7 @@
         <div style="margin-left: 10px;">
           <p-card [header]="receita.titulo" [subheader]="receita.subtitulo" >
             <ng-template pTemplate="header">
-                <img alt="Card" [src]="receita.img">
+                <img alt="Card" class="card__imagem" [src]="receita.img">
             </ng-template>
             <div class="chips">
               <div class="chips__item">

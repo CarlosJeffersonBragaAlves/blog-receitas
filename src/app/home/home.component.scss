@@ -25,3 +25,21 @@
   margin-right: 10px;
   color: white;
 }
+
+
+::ng-deep p-card .p-component:hover{
+  background-color: var(--bluegray-50);
+  cursor: pointer;
+
+
+  .card__imagem{
+    filter: brightness(50%)
+  }
+
+  .chips__item{
+    background: var(--surface-300);
+    color: var(--surface-600);
+  }
+
+}
+
