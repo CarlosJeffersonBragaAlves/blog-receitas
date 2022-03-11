@@ -29,6 +29,14 @@ import {PaginatorModule} from 'primeng/paginator';
 import {MatListModule} from '@angular/material/list';
 import {CarouselModule} from 'primeng/carousel';
 import { HttpClientModule } from '@angular/common/http';
+import {ToggleButtonModule} from 'primeng/togglebutton';
+import {MatSelectModule} from '@angular/material/select';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+import {MatButtonModule} from '@angular/material/button';
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
   declarations: [
@@ -60,7 +68,11 @@ import { HttpClientModule } from '@angular/common/http';
     PaginatorModule,
     MatListModule,
     CarouselModule,
-    HttpClientModule
+    HttpClientModule,
+    ToggleButtonModule,
+    MatSelectModule,
+    NgxMaskModule.forRoot(maskConfig),
+    MatButtonModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

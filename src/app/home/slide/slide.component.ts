@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { ReceitaModel } from './../../shared/model/receita-model';
+import { Component, Input, OnInit } from '@angular/core';
+import { DataService } from 'src/app/shared/services/data.service';
+import { IngredienteModel } from 'src/app/shared/model/ingrediente-model';
+import { ModoDePreparoModel } from 'src/app/shared/model/modo-de-preparo-model';
+import { StatusModel } from 'src/app/shared/model/status-model';
+import { TipoModel } from 'src/app/shared/model/tipo-model';
+import { ReceitaService } from 'src/app/shared/services/receita.service';
+
+
 
 @Component({
   selector: 'app-slide',
@@ -7,39 +16,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SlideComponent implements OnInit {
 
+  receitasSlides: ReceitaModel[] = [];
+  receitaSlide: ReceitaModel = {
+    id: 0,
+    urlImg: '',
+    destaque: 0,
+    title: '',
+    subtitle: '',
+    time: '',
+    portions: '',
+    difficulty: '',
+
+    tipoId: 0,
+    tipo: {
+      id: 0,
+      desc: ''
+    },
+
+    statusId: 0,
+    status: {
+      id: 0,
+      desc: ''
+    },
+
+    ingredientes: [],
+    modoDePreparos:[],
+
+    index: 0
+  };
   posicao: number = 0
-  teste: string[] = ['01','02','03','04']
   slideValue: string = ''
   index: number = 1
-  item!: { titulo: string; subtitulo: string, img: string, index: number };
-  slides: {titulo: string,subtitulo: string,img: string}[] = [
-    {
-      titulo: 'Arroz Cremoso de Legumes',
-      subtitulo: 'Receita De Arroz Cremoso De Legumes Delicioso Feito Com Impact Banana, Banana-da-terra E Legumes',
-      img: 'https://images.aws.nestle.recipes/resized/c86f80b4a040f4ae1225a629a0856d4c_arroz-cremoso-legumes-receitas-nestle_1200_600.jpg'
-    },
-    {
-      titulo: 'Escondidinho de Frango e Mandioquinha',
-      subtitulo: 'Receita de Escondidinho de Frango e Mandioquinha delicioso feito com IMPACT Banana, peito de frango desfiado, tomate e queijo parmesão',
-      img: 'https://images.aws.nestle.recipes/resized/05efe97045a4c8020a1fb01f8b073a49_escondidinho-frango-mandioquinha-receitas-nestle_1200_600.jpg'
-    },
-    {
-      titulo: 'Carne Moída Cremosa com Batata',
-      subtitulo: 'Receita de Carne Moída Cremosa e Batata deliciosa com IMPACT Banana, batata, extrato de tomate e cebolinha verde',
-      img: 'https://images.aws.nestle.recipes/resized/3cc0edd266542fdce05ebb8aeaada536_carne-moida-cremosa-batata-receitas-nestle_1200_600.jpg'
-    },
-    {
-      titulo: 'Strogonoff de Carne com Impact',
-      subtitulo: 'Receita de Strogonoff de Carne delicioso feito com IMPACT Baunilha, contra-filé e cogumelos',
-      img: 'https://images.aws.nestle.recipes/resized/9e1f8e0ed6c4df8098d7b8e647629627_strogonoff-carne-receitas-nestle_1200_600.jpg'
-    },
-  ]
 
-  constructor() { }
+
+
+  constructor(private ds: DataService,private rs: ReceitaService) { }
 
   ngOnInit() {
-    this.item = {...this.slides[0],index:0}
-    this.slide(5000,this.slides)
+    this.ds.getReceitasSlide<ReceitaModel[]>().subscribe(data =>{
+      this.index = 0
+      this.receitasSlides = this.rs.addUrlApiImage(data);
+      this.receitaSlide = {...data[0], index: 0}
+      this.slide(5000,this.receitasSlides);
+    })
+
+    //this.item = {...this.slides[0],index:0}
 
   }
 
@@ -48,7 +69,7 @@ export class SlideComponent implements OnInit {
       if(this.index >= (item.length)){
         this.index = 0
       }
-      this.item = {...this.slides[this.index],index: this.index}
+      this.receitaSlide = {...this.receitasSlides[this.index],index: this.index}
 
       this.index++
 
@@ -57,8 +78,10 @@ export class SlideComponent implements OnInit {
 
   selectSlide(i: number){
     this.index = i
-    this.item = {...this.slides[i],index: i}
+    this.receitaSlide = {...this.receitasSlides[i],index: i}
   }
+
+
 
 
 }

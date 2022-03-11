@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-
-interface receita{
-  titulo: string;
-  subtitulo: string;
-  img: string
-}
+import { PagePrimeNs } from '../home/home.component';
+import { Metadata } from '../shared/model/metadata';
+import { OptionsFilter } from '../shared/model/options-filter';
+import { ReceitaModel } from '../shared/model/receita-model';
+import { DataService } from '../shared/services/data.service';
+import { ReceitaService } from '../shared/services/receita.service';
 
 @Component({
   selector: 'app-receitas',
@@ -14,25 +14,77 @@ interface receita{
 })
 export class ReceitasComponent implements OnInit {
 
+  receitas: ReceitaModel[] = [];
+  metadata: Metadata = {
+    pageCount: 0,
+    totalItemCount: 0,
+    pageNumber: 1,
+    pageSize: 0,
+    hasPreviousPage: false,
+    hasNextPage: true,
+    isFirstPage: true,
+    isLastPage: false,
+    firstItemOnPage: 1,
+    lastItemOnPage: 1
+};
 
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
-  pageEvent!: PageEvent;
+filter: string = '';
 
-  items: string[] = [
-    '','','','','',''
-  ]
+filtered: boolean =  true
 
-  receita: receita = {
-    titulo: 'Escondidinho de Frango e Mandioquinha',
-    subtitulo: 'Receita de Escondidinho de Frango e Mandioquinha delicioso feito com IMPACT Banana, peito de frango desfiado, tomate e queijo parmesão',
-    img: 'https://images.aws.nestle.recipes/resized/05efe97045a4c8020a1fb01f8b073a49_escondidinho-frango-mandioquinha-receitas-nestle_1200_600.jpg'
-  }
+  Portions: string = '';
+  Tipo: number  = 0;
+  Time: string =  "";
+  difficulty: string = ''
 
-  constructor() { }
+
+  constructor(private rs: ReceitaService, private ds: DataService) { }
 
   ngOnInit() {
+    this.getReceitaspage({
+      Size: 9
+    });
   }
 
+
+  getReceitaspage(options: OptionsFilter) {
+    this.rs.receitasGet(options).subscribe((data) => {
+      this.receitas = this.rs.addUrlApiImage(data.itens);
+      this.metadata = data.metadata;
+    });
+  }
+
+  onPageChange(event: PagePrimeNs) {
+    let option: OptionsFilter = {
+      Page: event.page + 1,
+      Size: 9
+    }
+
+    this.getReceitaspage(option)
+  }
+
+  filterReceitas(){
+    console.log('filter',this.filter)
+
+      let option: OptionsFilter = {
+        Size: 9,
+        Filter: this.filter,
+        Time: this.Time,
+        Portions: this.Portions,
+
+      }
+
+      this.getReceitaspage(option)
+
+  }
+
+  resetFiltered(){
+    if(this.filtered){
+      this.Portions = '';
+      this.Tipo = 0;
+      this.Time =  '' ;
+      this.difficulty = ''
+    }
+    console.log('tempo', this.Time)
+  }
 }

@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'receitas', component: ReceitasComponent},
-  {path: 'receita', component: ReceitaComponent},
+  {path: 'receita/:id', component: ReceitaComponent},
 ];
 
 const routerOptions: ExtraOptions = {

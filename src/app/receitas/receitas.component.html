@@ -1,15 +1,44 @@
 <section class="filter">
   <div class="grid">
 
-      <mat-form-field appearance="outline" class="col-11">
+      <mat-form-field appearance="outline" class="col-10">
         <mat-label>Pesquisar</mat-label>
-        <input matInput placeholder="Placeholder">
+        <input matInput placeholder="Placeholder" [(ngModel)]="filter" (keyup)="filterReceitas()">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
-      <div class="col-1">
+      <div class="col-2 button__filter">
 
-        <button pButton pRipple type="button" icon="pi pi-filter-fill" class="p-button-rounded"></button>
+        <p-toggleButton [(ngModel)]="filtered" onLabel="Filter" offLabel="Filter" onIcon="pi pi-filter-fill"
+        offIcon="pi pi-times" [style]="{'width': '100%'}" (onChange)="resetFiltered()"></p-toggleButton>
+
+        <!-- <button pButton pRipple type="button" icon="pi pi-filter-fill" class="p-button-rounded"></button> -->
+
       </div>
+  </div>
+  <div class="grid" *ngIf="!filtered">
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Tempo(Min)</mat-label>
+      <input matInput placeholder="Placeholder" mask="0000" [(ngModel)]="Time" (keyup)="filterReceitas()">
+      <button *ngIf="Time" matSuffix mat-icon-button aria-label="Clear" (click)="Time=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Dificuldade</mat-label>
+      <mat-select [(value)]="difficulty">
+        <mat-option value="">Todas</mat-option>
+        <mat-option value="fácil">Fácil</mat-option>
+        <mat-option value="medio">Medio</mat-option>
+        <mat-option value="dificio">Difícil</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Porções</mat-label>
+      <input matInput placeholder="Placeholder" mask="0000" [(ngModel)]="Portions" (keyup)="filterReceitas()">
+      <button *ngIf="Portions" matSuffix mat-icon-button aria-label="Clear" (click)="Portions=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
   </div>
 
 </section>
@@ -23,27 +52,27 @@
   <hr  >
 
 <div class="grid">
-  <p-card [header]="receita.titulo" [subheader]="receita.subtitulo" class="card col-4" *ngFor="let item of items">
+  <p-card [header]="receita.title" [subheader]="receita.subtitle" class="card col-4" *ngFor="let receita of receitas">
     <ng-template pTemplate="header">
-        <img alt="Card" class="card__imagem" [src]="receita.img">
+        <img alt="Card" class="card__imagem" [src]="receita.urlImg">
     </ng-template>
     <div class="chips">
       <div class="chips__item">
         <fa-icon [icon]="['fas', 'stopwatch']"></fa-icon>
-        Tempo: 30min
+        Tempo: {{receita.time}}
       </div>
 
       <div class="chips__item">
         <fa-icon [icon]="['fas', 'align-right']" [rotate]="90"></fa-icon>
-        Dificuldade: Fácil
+        Dificuldade: {{receita.difficulty}}
       </div>
 
       <div class="chips__item">
         <fa-icon [icon]="['fas', 'utensils']"></fa-icon>
-        Porções: 2
+        Porções: {{receita.portions}}
       </div>
     </div>
   </p-card>
 </div>
-<p-paginator [rows]="10" [totalRecords]="120" ></p-paginator>
+ <p-paginator [rows]="metadata.pageSize" [totalRecords]="metadata.totalItemCount" (onPageChange)="onPageChange($event)"></p-paginator>
 </section>

@@ -36,7 +36,7 @@
 
 .post{
   margin: 0 10em;
-  padding: 1em 5em;
+  padding: 1em 3em;
 }
 
 .chips{
@@ -61,4 +61,22 @@
 
   font-family: var(--font-raleway);
   font-size: 2rem;
+}
+
+
+
+::ng-deep p-card .p-component:hover{
+  background-color: var(--bluegray-50);
+  cursor: pointer;
+
+
+  .card__imagem{
+    filter: brightness(50%)
+  }
+
+  .chips__item{
+    background: var(--surface-300);
+    color: var(--surface-600);
+  }
+
 }

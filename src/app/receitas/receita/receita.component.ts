@@ -1,4 +1,8 @@
+import { ReceitaService } from './../../shared/services/receita.service';
+import { ReceitaModel } from './../../shared/model/receita-model';
+import { DataService } from './../../shared/services/data.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 interface receita{
   titulo: string;
@@ -13,39 +17,33 @@ interface receita{
 })
 export class ReceitaComponent implements OnInit {
 
-  ingredientes: string[] = [
-    '1 colher (sopa) de azeite',
-    'meia cebola ralada',
-    'meia xícara (chá) de arroz',
-    '1 colher (chá) de sal',
-    'meia xícara (chá) de brócolis',
-    '1 tomate picado',
-    '1 xícara (chá) de água',
-    '1 pote de IMPACT® Banana',
-    '2 colheres (sopa) de queijo ralado',
-  ]
+  receita!: ReceitaModel;
 
-  modoPreparos: string[] = [
-    'Em uma panela funda, aqueça o azeite em fogo baixo e refogue a cebola, o arroz, o sal, o brócolis e o tomate. Misture bem e deixe dourar.',
-    'Junte a água misture bem e cozinha.',
-    'Adicione o IMPACT Banana e o queijo e misture bem.',
-    'Sirva',
-  ]
+  page: number = 0
 
+  recomendacaoReceitas: ReceitaModel[] = []
 
-  items: string[] = [
-    '','','','','',''
-  ]
+  constructor(private ds: DataService, private rs: ReceitaService ,private route: ActivatedRoute) {
 
-  receita: receita = {
-    titulo: 'Escondidinho de Frango e Mandioquinha',
-    subtitulo: 'Receita de Escondidinho de Frango e Mandioquinha delicioso feito com IMPACT Banana, peito de frango desfiado, tomate e queijo parmesão',
-    img: 'https://images.aws.nestle.recipes/resized/05efe97045a4c8020a1fb01f8b073a49_escondidinho-frango-mandioquinha-receitas-nestle_1200_600.jpg'
   }
 
-  constructor() { }
-
   ngOnInit() {
+    this.route.params.subscribe( params => {
+      let id: string = params['id'] + ''
+      console.log('id',id)
+
+      this.ds.getById<ReceitaModel>('receitas',id).subscribe(data =>{
+        this.receita = {...data, urlImg: this.ds.getUrlApi+data.urlImg}
+
+        this.ds.getByRelacionado<ReceitaModel[]>('receitas',data.id.toString(),data.tipoId.toString()).subscribe(data =>{
+          this.recomendacaoReceitas = this.rs.addUrlApiImage(data)
+          this.page = 0
+        })
+
+      })
+
+    });
+
   }
 
 }

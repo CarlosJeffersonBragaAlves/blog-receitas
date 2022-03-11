@@ -1,43 +1,73 @@
+import { OptionsFilter } from './../shared/model/options-filter';
+import { Metadata } from './../shared/model/metadata';
+import { ReceitaModel } from './../shared/model/receita-model';
+import { ReceitaService } from './../shared/services/receita.service';
 import { DataService } from './../shared/services/data.service';
 import { Component, OnInit } from '@angular/core';
 
-interface receita{
-  titulo: string;
-  subtitulo: string;
-  img: string
+export interface PagePrimeNs {
+  first: number;
+  page: number;
+  pageCount: number;
+  rows: number;
 }
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-
 })
 export class HomeComponent implements OnInit {
 
-  items: string[] = [
-    '','','','','',''
-  ]
+  receitasSlide: ReceitaModel[] = []
+  receitas: ReceitaModel[] = [];
+  metadata: Metadata = {
+        pageCount: 0,
+        totalItemCount: 0,
+        pageNumber: 1,
+        pageSize: 0,
+        hasPreviousPage: false,
+        hasNextPage: true,
+        isFirstPage: true,
+        isLastPage: false,
+        firstItemOnPage: 1,
+        lastItemOnPage: 1
+  };
 
-  receita: receita = {
-    titulo: 'Escondidinho de Frango e Mandioquinha',
-    subtitulo: 'Receita de Escondidinho de Frango e Mandioquinha delicioso feito com IMPACT Banana, peito de frango desfiado, tomate e queijo parmesão',
-    img: 'https://images.aws.nestle.recipes/resized/05efe97045a4c8020a1fb01f8b073a49_escondidinho-frango-mandioquinha-receitas-nestle_1200_600.jpg'
-  }
+  url: string =
+    'C://Projetos_ASP.Net//blog-receitas-api//wwwroot//upload//receita_01.jpg';
 
-  constructor(private ds: DataService) { }
+  constructor(private rs: ReceitaService, private ds: DataService) {}
 
   ngOnInit() {
-
     // setInterval(() => {
     //   index++
     //   console.log('teste',index)
     // },5000)
 
+    this.getReceitaspage({});
+    this.getReceitasSlide()
+  }
 
-    this.ds.getById('Receitas','01').subscribe(data => {
-      console.log('data', data)
+  getReceitaspage(options: OptionsFilter) {
+    this.rs.receitasGet(options).subscribe((data) => {
+      this.receitas = this.rs.addUrlApiImage(data.itens);
+      this.metadata = data.metadata;
+    });
+  }
+
+  getReceitasSlide(){
+    this.ds.getReceitasSlide<ReceitaModel[]>().subscribe(data =>{
+      this.receitasSlide = data.slice();
+      console.log('slide', data)
     })
   }
 
+  onPageChange(event: PagePrimeNs) {
+    let option: OptionsFilter = {
+      Page: event.page + 1,
+    }
+
+    this.getReceitaspage(option)
+  }
 }

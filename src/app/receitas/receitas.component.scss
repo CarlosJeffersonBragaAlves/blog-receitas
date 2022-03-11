@@ -34,3 +34,25 @@
   color: white;
 }
 
+::ng-deep p-card .p-component:hover{
+  background-color: var(--bluegray-50);
+  cursor: pointer;
+
+
+  .card__imagem{
+    filter: brightness(50%)
+  }
+
+  .chips__item{
+    background: var(--surface-300);
+    color: var(--surface-600);
+  }
+
+}
+
+.button__filter{
+  display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-top: 15px;
+}

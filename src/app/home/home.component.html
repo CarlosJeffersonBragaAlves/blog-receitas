@@ -4,26 +4,29 @@
 
 <section class="post grid">
 
-  <p-card [header]="receita.titulo" [subheader]="receita.subtitulo" class="card col-4" styleClass="p-card-shadow ui-card" *ngFor="let item of items" routerLink="/receita">
+  <p-card [header]="item.title" [subheader]="item.subtitle" class="card col-4"
+    styleClass="p-card-shadow ui-card" *ngFor="let item of receitas" [routerLink]="['/receita',item.id]">
     <ng-template pTemplate="header" class="img">
-        <img alt="Card" class="card__imagem" [src]="receita.img">
+        <img alt="Card" class="card__imagem" [src]="item.urlImg">
     </ng-template>
     <div class="chips">
       <div class="chips__item">
         <fa-icon [icon]="['fas', 'stopwatch']"></fa-icon>
-        Tempo: 30min
+        Tempo: {{item.time}}
       </div>
 
       <div class="chips__item">
         <fa-icon [icon]="['fas', 'align-right']" [rotate]="90"></fa-icon>
-        Dificuldade: Fácil
+        Dificuldade: {{item.difficulty}}
       </div>
 
       <div class="chips__item">
         <fa-icon [icon]="['fas', 'utensils']"></fa-icon>
-        Porções: 2
+        Porções: {{item.portions}}
       </div>
     </div>
   </p-card>
-
+  <div class="col-12">
+    <p-paginator [rows]="metadata.pageSize" [totalRecords]="metadata.totalItemCount" (onPageChange)="onPageChange($event)"></p-paginator>
+  </div>
 </section>
