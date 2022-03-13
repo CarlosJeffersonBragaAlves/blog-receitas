@@ -52,7 +52,7 @@
   <hr  >
 
 <div class="grid">
-  <p-card [header]="receita.title" [subheader]="receita.subtitle" class="card col-4" *ngFor="let receita of receitas">
+  <p-card [header]="receita.title" [subheader]="receita.subtitle" class="card col-4" *ngFor="let receita of receitas" [routerLink]="['/receita',receita.id]">
     <ng-template pTemplate="header">
         <img alt="Card" class="card__imagem" [src]="receita.urlImg">
     </ng-template>

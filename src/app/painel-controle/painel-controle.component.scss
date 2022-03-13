@@ -1,0 +1,52 @@
+.receitas{
+  margin: 0 10em;
+  padding: 1em 5em;
+}
+
+.receitas__titulo{
+
+  font-family: var(--font-raleway);
+  font-size: 3rem;
+}
+
+
+
+.chips{
+  display: flex;
+  justify-content: start;
+  //padding: 0 30px;
+  //margin-bottom: 50px;
+
+}
+
+.chips__item{
+  background: var(--surface-500);
+  padding: 10px;
+  font-size: 0.9rem;
+  border-radius: 16px;
+  margin-right: 10px;
+  color: white;
+}
+
+
+.post__button{
+display: flex;
+}
+
+
+.button-delete, .button-destaque, .button-edit{
+  width: calc(100% / 3);
+}
+
+.button-destaque{
+  border-radius: 6px 0 0 0;
+}
+
+.button-edit{
+  border-radius:0;
+
+}
+
+.button-delete{
+  border-radius: 0 6px 0 0;
+}

@@ -33,6 +33,8 @@ import {ToggleButtonModule} from 'primeng/togglebutton';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxMaskModule, IConfig } from 'ngx-mask'
 import {MatButtonModule} from '@angular/material/button';
+import { PainelControleComponent } from './painel-controle/painel-controle.component';
+import { FormComponent } from './painel-controle/form/form.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -45,6 +47,8 @@ const maskConfig: Partial<IConfig> = {
     SlideComponent,
     ReceitasComponent,
     ReceitaComponent,
+    PainelControleComponent,
+    FormComponent,
    ],
   imports: [
     BrowserModule,
@@ -72,7 +76,7 @@ const maskConfig: Partial<IConfig> = {
     ToggleButtonModule,
     MatSelectModule,
     NgxMaskModule.forRoot(maskConfig),
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

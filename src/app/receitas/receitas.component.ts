@@ -26,12 +26,9 @@ export class ReceitasComponent implements OnInit {
     isLastPage: false,
     firstItemOnPage: 1,
     lastItemOnPage: 1
-};
-
-filter: string = '';
-
-filtered: boolean =  true
-
+  };
+  filter: string = '';
+  filtered: boolean =  true
   Portions: string = '';
   Tipo: number  = 0;
   Time: string =  "";
