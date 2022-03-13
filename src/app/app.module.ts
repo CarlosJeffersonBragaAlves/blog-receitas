@@ -35,6 +35,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
 import {MatButtonModule} from '@angular/material/button';
 import { PainelControleComponent } from './painel-controle/painel-controle.component';
 import { FormComponent } from './painel-controle/form/form.component';
+import {FileUploadModule} from 'primeng/fileupload'
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -77,6 +78,7 @@ const maskConfig: Partial<IConfig> = {
     MatSelectModule,
     NgxMaskModule.forRoot(maskConfig),
     MatButtonModule,
+    FileUploadModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -1,3 +1,4 @@
+import { ReceitaModel } from './../model/receita-model';
 import { OptionsFilter } from './../model/options-filter';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -44,7 +45,18 @@ export class DataService {
     return this.http.get<T>(`${this.url}api/receitas/slide`);
   }
 
+  postEdit<T>(coll: string, options: ReceitaModel){
+    let receita = options;
+    receita.urlImg = this.removeUrlImage(options?.urlImg+'')
+    return this.http.put<T>(`${this.url}api/${coll}/${options?.id}`,options);
+  }
+
   get getUrlApi(){
     return this.url
   }
+
+  removeUrlImage(url: string){
+    return url.replace(this.getUrlApi,'')
+  }
+
 }

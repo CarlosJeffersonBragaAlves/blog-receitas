@@ -1,15 +1,35 @@
-<section class="receitas">
-  <!-- <p-divider align="left">
 
-  </p-divider> -->
-  <h2 class="receitas__titulo">Receitas</h2>
+
+
+<section class="receitas">
+  <div class="grid">
+
+    <mat-form-field appearance="outline" class="col-10">
+      <mat-label>Pesquisar</mat-label>
+      <input matInput placeholder="Placeholder" [(ngModel)]="filter" (keyup)="filterReceitas()">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <div class="col-2 buttons-actions">
+      <button pButton pRipple type="button" icon="pi pi-star"
+        styleClass="p-button-lg" (click)="getDestaques()"  [ngClass]="{'p-button-warning': !destaque,'p-button-secondary': destaque}"
+        class="p-button-rounded p-button-warning"></button>
+      <button pButton pRipple type="button" icon="pi pi-plus" styleClass="p-button-lg" routerLink="/control/form" class="p-button-rounded p-button-success"></button>
+    </div>
+</div>
+
   <hr  >
 
 <div class="grid">
   <p-card [header]="receita.title" [subheader]="receita.subtitle" class="card col-6" *ngFor="let receita of receitas">
     <ng-template pTemplate="header">
       <div class="post__button">
-        <button pButton pRipple type="button" label="Destaque" icon="pi pi-star" [ngClass]="{'p-button-warning': receita.destaque == 1,'p-button-secondary' : receita.destaque == 2}" class="p-button-secondary button-destaque"></button>
+        <button pButton pRipple type="button" label="Destaque" icon="pi pi-star" *ngIf="receita.statusId == 2"
+          [ngClass]="{'p-button-warning': receita.destaque == 1,'p-button-secondary' : receita.destaque == 2}"
+          class="p-button-secondary button-destaque"></button>
+
+        <button #publicarbutton pButton pRipple type="button" label="Publicar" *ngIf="receita.statusId == 1"
+          icon="pi pi-globe" class="p-button-help button-destaque" (click)="publicarPost(receita.id)"></button>
+
         <button pButton pRipple type="button" label="Editar" icon="pi pi-pencil" class=" button-edit"></button>
         <button pButton pRipple type="button" label="Deletar" icon="pi pi-trash" class="p-button-danger button-delete"></button>
       </div>

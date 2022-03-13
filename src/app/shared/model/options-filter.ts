@@ -4,7 +4,7 @@ export interface OptionsFilter {
   Filter?: string;
   Limit?: number;
   Status?: number;
-
+  Destaque?: 1 | 2;
 
   Portions?: string;
   Tipo?: number ;

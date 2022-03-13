@@ -50,3 +50,10 @@ display: flex;
 .button-delete{
   border-radius: 0 6px 0 0;
 }
+
+
+.buttons-actions{
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 13px;
+}
